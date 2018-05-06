@@ -1,5 +1,5 @@
 import { call, put, select } from 'redux-saga/effects';
-import { getIsNetworkErrorPresent, clearNetworkErrors, networkError } from 'ducks/network';
+import { getIsNetworkErrorPresent, clearNetworkErrors, networkError } from '../ducks/network';
 import { logout } from 'ducks/auth';
 
 export default function*(fn, args) {
