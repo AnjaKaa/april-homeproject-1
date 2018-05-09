@@ -18,12 +18,12 @@ const FollowerPic = styled.div`
   border-style: solid;
   border-color: rgb(238, 238, 238);
   border-image: initial;
-`;
 
-const FollowerPicImg = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 `;
 
 const FollowerInfo = styled.div`
@@ -37,7 +37,7 @@ class Follower extends PureComponent {
     return (
       <FollowerWrap>
         <FollowerPic>
-          <FollowerPicImg src={avatarUrl} alt={login} />
+          <img src={avatarUrl} alt={login} />
         </FollowerPic>
         <FollowerInfo>
           <Link to={`/users/${login}`}>

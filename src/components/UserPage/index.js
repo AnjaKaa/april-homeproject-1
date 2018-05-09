@@ -30,12 +30,11 @@ const UserPic = styled.div`
   border-style: solid;
   border-color: rgb(238, 238, 238);
   border-image: initial;
-`;
-
-const UserPicImg = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 `;
 
 const UserInfo = styled.div`
@@ -96,7 +95,7 @@ export class UserPage extends Component {
         <Wrap>
           <UserWrap>
             <UserPic>
-              <UserPicImg src={user.avatar_url} alt={user.login} />
+              <img src={user.avatar_url} alt={user.login} />
             </UserPic>
             <UserInfo>
               <h3>{user.login}</h3>
