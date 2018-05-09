@@ -6,6 +6,8 @@ const FollowerWrap = styled.div`
   display: flex;
   flex-direction: row;
   padding: 30px;
+  margin: 10px;
+  border: 1px solid rgba(0, 191, 165, 0.85);
 `;
 
 const FollowerPic = styled.div`
@@ -13,16 +15,12 @@ const FollowerPic = styled.div`
   height: 100px;
   background-color: rgb(255, 255, 255);
   padding: 10px;
-  border-radius: 8px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgb(238, 238, 238);
-  border-image: initial;
 
   img {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    border-radius: 50%;
   }
 `;
 

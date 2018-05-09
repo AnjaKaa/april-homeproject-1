@@ -10,30 +10,26 @@ import Followers from '../Followers';
 
 const Wrap = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
+  color: rgb(255, 255, 255);
 `;
 
 const UserWrap = styled.div`
   display: flex;
   flex-direction: row;
   padding: 30px;
+  background-color: rgba(0, 191, 165, 0.85);
 `;
 
 const UserPic = styled.div`
   width: 300px;
   height: 300px;
-  background-color: rgb(255, 255, 255);
-  padding: 10px;
-  border-radius: 8px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgb(238, 238, 238);
-  border-image: initial;
   img {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    border-radius: 50%;
   }
 `;
 
@@ -45,6 +41,18 @@ const UserInfo = styled.div`
 const LogoutBtnWrap = styled.div`
   margin: 10px auto 40px;
   text-align: center;
+
+  button {
+    padding: 10px 20px;
+    background-color: rgb(255, 255, 255);
+    color: rgba(0, 191, 165, 0.85);
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    cursor: pointer;
+    border-left: 0.125rem solid #74cac2;
+  }
 `;
 
 const LogoutBtn = props => {
@@ -82,9 +90,9 @@ export class UserPage extends Component {
 
     if (isFetching) {
       return (
-        <Wrap>
-          <Spinner size="64px" color="fuchsia" gap={5} />
-        </Wrap>
+        <div style={{ textAlign: 'center' }}>
+          <Spinner size="64px" color="rgba(0, 191, 165, 0.85)" gap={5} />
+        </div>
       );
     } else if (!user) {
       return null;
@@ -102,13 +110,15 @@ export class UserPage extends Component {
               <p>Followers: {user.followers}</p>
               <p>Public repos: {user.public_repos}</p>
             </UserInfo>
+            <LogoutBtnWrap>
+              {isAuthorized && (
+                <LogoutBtn logout={logout} handleClick={() => this.props.logout()} />
+              )}
+              {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+            </LogoutBtnWrap>
           </UserWrap>
           <Followers login={user.login} />
         </Wrap>
-        <LogoutBtnWrap>
-          {isAuthorized && <LogoutBtn logout={logout} handleClick={() => this.props.logout()} />}
-          {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-        </LogoutBtnWrap>
       </Fragment>
     );
   }

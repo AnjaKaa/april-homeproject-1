@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Spinner from 'react-svg-spinner';
 
@@ -13,7 +13,6 @@ const FollowersWrap = styled.div`
   flex-wrap: wrap;
   -webkit-box-pack: center;
   justify-content: center;
-  margin: 20px 60px;
 `;
 
 export class Followers extends PureComponent {
@@ -29,17 +28,24 @@ export class Followers extends PureComponent {
     const { followers, isFetching } = this.props;
 
     if (isFetching) {
-      return <Spinner size="64px" color="fuchsia" gap={5} />;
+      return (
+        <div style={{ textAlign: 'center' }}>
+          <Spinner size="64px" color="rgba(0, 191, 165, 0.85)" gap={5} />
+        </div>
+      );
     } else if (!followers) {
       return null;
     }
 
     return (
-      <FollowersWrap>
-        {followers.map(item => (
-          <Follower key={item.id} login={item.login} avatarUrl={item.avatar_url} />
-        ))}
-      </FollowersWrap>
+      <Fragment>
+        <h2 style={{ textAlign: 'center', color: 'rgba(0, 191, 165, 0.85)' }}>Followers </h2>
+        <FollowersWrap>
+          {followers.map(item => (
+            <Follower key={item.id} login={item.login} avatarUrl={item.avatar_url} />
+          ))}
+        </FollowersWrap>
+      </Fragment>
     );
   }
 }
